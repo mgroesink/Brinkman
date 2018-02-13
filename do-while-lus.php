@@ -13,8 +13,8 @@ $maand = 1;
 echo "<br>Beginsaldo is: $saldo";
 echo "<br>START...";
 do {
-    $saldo += $saldo * $rente;
-    $saldo = sprintf("0.2f" , $slado);
+    $saldo = $saldo +  ($saldo * $rente);
+    $saldo = sprintf("%0.2f" , $saldo);
     echo "<br>Maand: $maand je saldo is: $saldo";
     $maand++;
 } while ($saldo < 2000);
