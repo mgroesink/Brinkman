@@ -1,10 +1,10 @@
 <?php
 include_once("externefunctions.php");
 $albums = array(
-    array("code" => "001", "artiest" => "Cesaria Evora",
+    array("code" => "001", "genre" => "World" , "artiest" => "Cesaria Evora",
         "titel" => "Em Um Concerto", "tracks" => 10, "prijs" => 9.99 ,
         "cover" => "evora.jpg"),
-    array("code" => "002", "artiest" => "Manu Chao",
+    array("code" => "002", "genre" => "World" , "artiest" => "Manu Chao",
         "titel" => "Clandestino", "tracks" => 12, "prijs" => 9.95 ,
         "cover" => "manuchao.jpg")
 )
@@ -44,58 +44,12 @@ $albums = array(
                 echo "<td>";
                 echo "Aantal: " . "<input type=\"text\" size=2 maxlength=3 name=\"aantal[$i]\" value=\"0\"
                                    style=\"background-color:#f8ce6c\"";
+                echo "<input type=\"hidden\" name=\"genre[$i]\" value='" . $albums[$i]["genre"]
+                . "'";
                 echo "</td>";
                 echo "</tr>";
             }
             ?>
-
-            <tr>
-                <td>
-                    <img src="images/evora.jpg" width="100px" alt="X"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Cesaria Evora "Em Um Concerto" Tracks:10 Prijs: € 10.00
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="hidden" name="albumcode[0]" value="001"/>
-                    <input type="hidden" name="artiest[0]" value="Cesaria Evora "/>
-                    <input type="hidden" name="titel[0]" value="Em Um Concerto"/>
-                    <input type="hidden" name="tracks[0]" value="10"/>
-                    <input type="hidden" name="prijs[0]" value="10"/>
-                    <input type="hidden" name="genre[0]" value="World"/>
-                    Aantal: <input type="text" size=2 maxlength=3 name="aantal[0]" value="0"
-                                   style="background-color:#f8ce6c"/>
-                    <hr/>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img src="images/juanes.jpg" width="100px" alt="X"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Juanes "Juanes title" Tracks:10 Prijs: € 25.00
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="hidden" name="albumcode[1]" value="002"/>
-                    <input type="hidden" name="artiest[1]" value="Juanes "/>
-                    <input type="hidden" name="titel[1]" value="Juanes title"/>
-                    <input type="hidden" name="tracks[1]" value="8"/>
-                    <input type="hidden" name="prijs[1]" value="25"/>
-                    <input type="hidden" name="genre[1]" value="World"/>
-                    Aantal: <input type="text" size=2 maxlength=3 name="aantal[1]" value="0"
-                                   style="background-color:#f8ce6c"/>
-                    <hr/>
-                </td>
-            </tr>
 
             <tr>
                 <td>Korting:<br/>
@@ -130,10 +84,11 @@ $albums = array(
 <?php
 if (isset($_POST["Bestellen"])) {
     if (isset($_POST["aantal"][0])) {
-        if (!bestelRules($_POST["genre"][0], $_POST["aantal"][0])) {
-            echo "Ongeldig aantal";
-            return;
-        }
+
+//        if (!bestelRules($_POST["genre"][0], $_POST["aantal"][0])) {
+//            echo "Ongeldig aantal";
+//            return;
+//        }
         echo "Aantal: " . array_sum($_POST["aantal"]) . "<br>";
         $korting = 0;
         if (isset($_POST["student"])) {
@@ -146,10 +101,6 @@ if (isset($_POST["Bestellen"])) {
             $korting += 10;
         }
         echo "Korting is: " . $korting . " procent<br>";
-        $totaal = 0;
-        for ($i = 0; $i < count($_POST["aantal"]); $i++) {
-            $totaal += $_POST["aantal"][$i] * $_POST["prijs"][$i];
-        }
         if (isset($_POST["betaalwijze"])) {
             echo "U heeft ervoor gekozen om met " . $_POST["betaalwijze"] . " te betalen.<br>";
         }
@@ -157,9 +108,9 @@ if (isset($_POST["Bestellen"])) {
         $servicekosten = servicekosten($_POST["betaalwijze"]);
         echo "Servicekosten: € " . number_format($servicekosten, 2, ",", ".") . "<br><br>";
 
-        $totaal = ($totaal * (100 - $korting)) / 100 + $servicekosten;
-        echo "<h3>Totaal te betalen: € " .
-            number_format($totaal, 2, ",", ".") . "</h3><br>";
+        overzicht($albums , $korting , $servicekosten);
+
+
     }
 
 }
