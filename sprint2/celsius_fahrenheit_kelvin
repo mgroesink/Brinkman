@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Marcel
+ * Date: 5-2-2018
+ * Time: 19:52
+ */
+
+echo "<table>";
+echo "<tr>";
+echo "<th>Celsius</th><th>Fahrenheit</th><th>Kelvin</th>";
+echo "</tr>";
+
+for ($i = -50; $i <= 50; $i++) {
+    echo "<tr>";
+    echo "<td>" . $i . "</td>";
+    echo "<td>" . ($i * 9 / 5 + 32) . "</td>";
+    echo "<td>" . ($i + 273.15) . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
