@@ -2,9 +2,21 @@
 <html>
 <head>
     <title>Browser check</title>
-
+<style>
+    table {
+        border: black 2px solid;
+        border-collapse: collapse;
+        width: 500px;
+        margin:20px;
+    }
+    td , th {
+        border: blue 1px dotted;
+        border-collapse: collapse;
+        text-align: left;
+    }
+</style>
 </head>
-</html>
+<body>
 <?php
 /**
  * Created by PhpStorm.
@@ -25,7 +37,16 @@
 //}
 
 function printArray($item , $key){
-    echo "key: " .$key . "<br>value: " . $item . "<br><br>";
+    echo "<tr><td>" .$key . "</td><td>" . $item . "</td></tr>";
 }
 
+echo "<table>";
+echo "<tr>";
+echo "<th>Key</th><th>Value</th>";
+
 array_walk($_SERVER , "printArray");
+
+echo "</table>";
+?>
+</body>
+</html>
