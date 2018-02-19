@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Choosecolors</title>
+    <title>Choose colors</title>
 </head>
 
 
@@ -15,7 +15,7 @@
 
 if (isset($_POST["submit"])) {
 
-    echo "<bodystyle='background-color:" . $_POST["backcolor"]
+    echo "<body style='background-color:" . $_POST["backcolor"]
         . ";color:" . $_POST["forecolor"] . "'>";
 } else {
     echo "<body>";
@@ -83,12 +83,10 @@ if (isset($_POST["submit"])) {
                 ="orange">Orange
         </option>
     </select>
-    <inputtype
-    ="submit"name="submit">
+    <input type="submit" name="submit">
 </form>
 <br>
-<imgsrc
-="images/cicero2.jpg"width="150"alt="LoremIpsum"/>
+<img src="images/cicero2.jpg" width="150" alt="LoremIpsum"/>
 <p>Loremipsumdolorsitametconsectetur,adipiscingelitnequelaoreetnisleleifend,egetduisodioultricies.Nisl
     gravidatemporsemfacilisicuraemorbisollicitudinhabitassemagnaluctus,nibhodiotorquentvariusscelerisque
     nuncvenenatispernam.Temporlobortisnetusblanditplaceratnibhtinciduntcuraetristiquedisfamesfacilisi
