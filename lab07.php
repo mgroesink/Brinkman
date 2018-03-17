@@ -69,9 +69,14 @@
 <!--Shoppingcart eindigt hier--> </body>
 </html>
 <?php
+
+function printArray($item , $key){
+    echo "Aantal " . ($key + 1) . ": " . $item . "<br>";
+}
 if(isset($_POST["Bestellen"])) {
-    if(isset($_POST["aantal"][0])){
-        echo "Aantal: " . array_sum($_POST["aantal"]) . "<br>";
+    if(isset($_POST["aantal"])){
+        array_walk($_POST["aantal"] , "printArray");
+        //echo "Aantal: " . $_POST["aantal"][0] . "<br>";
         $korting = 0;
         if(isset($_POST["student"])){
             $korting += 15;

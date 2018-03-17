@@ -29,11 +29,9 @@ function getTemp($day, $time)
     echo "De temperatuur op " . $day . " om " . $time . " uur was " . $temp . " graden Celsius";
 }
 
-function addFive($x)
-{
-
-    $total = $x + 5;
-    echo "The new value is: " . $total;
+function addFive($numberToAdd) {
+    $total = $numberToAdd + 5;
+    return $total;
 }
 
 function login($username, $password)
