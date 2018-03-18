@@ -35,3 +35,13 @@ foreach ($boeken as $boek){
     echo "<br>Prijs: ". $boek["prijs"];
     $counter++;
 }
+
+echo "<br> Opgave 65: " . count($boeken) . "<br>";
+$boekenObj = json_decode($boekenJasonLiteral);
+foreach ($boekenObj as $boek){
+    echo "<br>Titel: ". $boek->titel;
+    echo "<br>Auteur: ". $boek->auteur;
+    echo "<br>Genre: ". $boek->genre;
+    echo "<br>Prijs: ". $boek->prijs;
+
+}
