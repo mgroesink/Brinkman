@@ -44,6 +44,7 @@ if(isset($_GET["date2"])){
 
     input[type="submit"]{
         margin:20px 0 20px 0;
+        padding:5px 15px 5px 15px;
     }
 </style>
 </head>
